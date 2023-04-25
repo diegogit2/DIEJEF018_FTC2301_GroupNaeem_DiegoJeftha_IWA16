@@ -69,27 +69,29 @@ const MONTHS = [
   
   const createHtml = (athlete) => {
     const {firstName, surname, id, races} = data.response.data[athlete];   //used object destructuring
-    const latestRace = races.slice().reverse();
+    const latestRace = races.slice(-1)    //slice(-1) method to get last item in array
+      
     const {date, time} = latestRace;
-  
+
     const fragment = document.createDocumentFragment();
   
-    title = document.createElement('h2');
-    title= id;
+    const title = document.createElement('h2');
+    title.textContent = id;
     fragment.appendChild(title);
   
     const list = document.createElement('dl');
   
     const day = date.getDate();
-    const month = MONTHS[date.month];
-    const year = date.year;
+    const month = MONTHS[date.getmonth()];
+    const year = date.getFullYear();
   
-    first, second, third, fourth = timeAsArray;
-    total = first + second + third + fourth;
+    const [first, second, third, fourth] = time;
+    const total = first + second + third + fourth;
   
     const hours = total / 60;
     const minutes = total / hours / 60;
-  
+
+
     list.innerHTML = /* html */ `
       <dt>Athlete</dt>
       <dd>${firstName} ${surname}</dd>
@@ -106,7 +108,9 @@ const MONTHS = [
   
     fragment.appendChild(list);
   }
-  
+
   [NM372], [SV782] = data
   document.querySelector(NM372).appendChild(createHtml(NM372));
   document.querySelector(SV782).appendChild(createHtml(SV782));
+
+  
