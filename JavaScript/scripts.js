@@ -97,17 +97,14 @@ day = day.toLocaleString("en-US", {day: "numeric", month: "short" })
 
 
     list.innerHTML = /* html */ `
-      <dt>Athlete</dt>
-      <dd>${firstName} ${surname}</dd>
+      <dt>Athlete: ${firstName} ${surname}</dt>
   
-      <dt>Total Races:</dt>
-      <dd>${races.length}</dd>
+      <dt>Total Races: ${races.length}</dt>
+      
+      <dt>Event Date (Latest): ${day} ${month} ${year}</dt>
   
-      <dt>Event Date (Latest)</dt>
-      <dd>${day} ${month} ${year}</dd>
-  
-      <dt>Total Time (Latest)</dt>
-      <dd>${hours.toString().padStart(2, 0)} : ${minutes.toString().padStart(2, 0)}</dd>
+      <dt>Total Time (Latest): ${hours.toString().padStart(2, 0)} : ${minutes.toString().padStart(2, 0)}</dt>
+      <dd></dd>
     `;
   
     fragment.appendChild(list);
